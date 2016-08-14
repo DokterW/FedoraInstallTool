@@ -1,4 +1,4 @@
-# Fedora - Install Tool - v0.1
+# Fedora Install Tool v0.1
 
 There isn't much to say other than this shell script will install [Resilio BTsync](http://resilio.com), [RPM Fusion](http://rpmfusion.org) repos, (the dreaded) Broadcom Wireless drivers and [Powerline](https://fedoramagazine.org/add-power-terminal-powerline/) on your Fedora install.
 

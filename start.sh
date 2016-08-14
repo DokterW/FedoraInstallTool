@@ -1,5 +1,6 @@
 #!/bin/bash
 #Fedora Install Tool v0.1
+# Made by Dr. Waldijk
 #A script to install various repos & software
 #Read the README.md for more info
 # -----------------------------------------------------------------------------------
