@@ -1,5 +1,5 @@
 #!/bin/bash
-#Fedora Install Tool v0.1
+#Fedora Install Tool v0.2
 # Made by Dr. Waldijk
 #A script to install various repos & software
 #Read the README.md for more info
@@ -7,11 +7,13 @@
 while :
 do
     clear
-    echo "Fedora Install Tool v0.1"
+    echo "Fedora Install Tool v0.2"
     echo ""
-    echo "1. Install Resilio BTsync     |  2. Install Powerline"
-    echo "3. Install RPM Fusion         |  4. Install Broadcom Wireless"
-    echo "0. Quit"
+    echo "1. Install Resilio BTsync  |  2. Install Powerline"
+    echo "3. Install RPM Fusion      |  4. Install Broadcom Wireless"
+    echo "5. Install audio codecs    |  6. Instal VLC"
+    echo ""
+    echo "Q. Quit"
     echo ""
     read -p "Enter option: " -s -n1 FITOPT
     case "$FITOPT" in
@@ -70,14 +72,42 @@ do
             else
                 clear
                 echo "Starting install..."
-                sudo dnf -y akmod-wl kmod-wl broadcom-wl kernel-devel
+                sudo dnf -y install akmod-wl kmod-wl broadcom-wl kernel-devel
                 echo "Install done!"
                 read -p "Press (the infamous) any key to continue... " -n1 -s
             fi
         ;;
-        0)
+        5)
+#             if [ -e /usr/src/akmods/wl-kmod*.rpm ]
+#            then
+#                clear
+#                echo "You already have Broadcom Wireless drivers installed."
+#                read -p "Press (the infamous) any key to continue... " -n1 -s
+#            else
+                clear
+                echo "Starting install..."
+                sudo dnf -y install gstreamer-plugins-base gstreamer-plugins-good gstreamer-plugins-bad gstreamer-plugins-ugly gstreamer-plugins-good-extras gstreamer-plugins-bad-free gstreamer-plugins-bad-nonfree gstreamer-plugins-bad-free-extras gstreamer1-plugins-base gstreamer1-plugins-good gstreamer1-plugins-good-extras gstreamer1-plugins-bad-free gstreamer1-plugins-bad-nonfree gstreamer1-plugins-bad-free-extras gstreamer1-plugins-ugly gstreamer1-plugins-ugly gstreamer1-plugins-bad-freeworld faac
+                echo "Install done!"
+                read -p "Press (the infamous) any key to continue... " -n1 -s
+#            fi
+        ;;
+        6)
+            if [ -e /bin/vlc ]
+            then
+                clear
+                echo "You already have Broadcom Wireless drivers installed."
+                read -p "Press (the infamous) any key to continue... " -n1 -s
+            else
+                clear
+                echo "Starting install..."
+                sudo dnf -y install vlc
+                echo "Install done!"
+                read -p "Press (the infamous) any key to continue... " -n1 -s
+            fi
+        ;;
+        [qQ])
             clear
-            echo "Fedora Install Tool v0.1"
+            echo "Fedora Install Tool v0.2"
             echo "Bye!"
             break
         ;;
