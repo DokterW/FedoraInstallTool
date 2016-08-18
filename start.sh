@@ -1,17 +1,20 @@
 #!/bin/bash
-#Fedora Install Tool v0.2
+# Fedora Install Tool v0.3
 # Made by Dr. Waldijk
-#A script to install various repos & software
-#Read the README.md for more info
+# A script to install various repos & software
+# Read the README.md for more info
+# By running this script you agree to the license terms.
 # -----------------------------------------------------------------------------------
+FITVER=$(echo "0.3")
 while :
 do
     clear
-    echo "Fedora Install Tool v0.2"
+    echo "Fedora Install Tool v$FITVER"
     echo ""
     echo "1. Install Resilio BTsync  |  2. Install Powerline"
     echo "3. Install RPM Fusion      |  4. Install Broadcom Wireless"
     echo "5. Install audio codecs    |  6. Instal VLC"
+    echo "7. Install MC              |  8. Instal VIM"
     echo ""
     echo "Q. Quit"
     echo ""
@@ -26,7 +29,8 @@ do
             else
                 clear
                 echo "Starting install..."
-                sudo echo -e "[btsync]\nname=BitTorrent Sync $basearch\nbaseurl=http://linux-packages.getsync.com/btsync/rpm/$basearch\nenabled=1\ngpgcheck=1" > /etc/yum.repos.d/btsync.repo
+                echo -e "[btsync]\nname=BitTorrent Sync \$basearch\nbaseurl=http://linux-packages.getsync.com/btsync/rpm/\$basearch\nenabled=1\ngpgcheck=1" > btsync.repo
+                sudo mv btsync.repo /etc/yum.repos.d/
                 sudo rpm --import http://linux-packages.getsync.com/btsync/key.asc
                 sudo dnf -y install btsync
                 echo -e "alias startbtsync='systemctl --user start btsync.service'\nalias stopbtsync='systemctl --user stop btsync.service'\nalias statusbtsync='systemctl --user status btsync.service'\nalias enablebtsync='systemctl --user enable btsync.service'\nalias disablebtsync='systemctl --user disable btsync.service'" >> ~/.bashrc
@@ -105,9 +109,37 @@ do
                 read -p "Press (the infamous) any key to continue... " -n1 -s
             fi
         ;;
+        7)
+            if [ -e /bin/mc ]
+            then
+                clear
+                echo "You already have Midnight Commander installed."
+                read -p "Press (the infamous) any key to continue... " -n1 -s
+            else
+                clear
+                echo "Starting install..."
+                sudo dnf -y install mc
+                echo "Install done!"
+                read -p "Press (the infamous) any key to continue... " -n1 -s
+            fi
+        ;;
+        8)
+            if [ -e /bin/vim ]
+            then
+                clear
+                echo "You already have VIM installed."
+                read -p "Press (the infamous) any key to continue... " -n1 -s
+            else
+                clear
+                echo "Starting install..."
+                sudo dnf -y install vim
+                echo "Install done!"
+                read -p "Press (the infamous) any key to continue... " -n1 -s
+            fi
+        ;;
         [qQ])
             clear
-            echo "Fedora Install Tool v0.2"
+            echo "Fedora Install Tool v$FITVER"
             echo "Bye!"
             break
         ;;

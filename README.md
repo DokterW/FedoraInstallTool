@@ -14,5 +14,9 @@ For those of you who love Fedora, but end up with computers with the Broadcom Wi
 
 ### Roadmap
 
-* Add audio codecs
-* Add VLC (because why not)
+**2016-08-18**
+* Added0 audio codecs
+* Added VLC (because why not)
+* Added Midnight Commander
+* Added VIM
+* Fixed BTsync install
