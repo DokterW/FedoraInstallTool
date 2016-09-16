@@ -1,17 +1,17 @@
 #!/bin/bash
-# Fedora Install Tool v0.3
+# Fedora Install Tool v0.4
 # Made by Dr. Waldijk
 # A script to install various repos & software
 # Read the README.md for more info
 # By running this script you agree to the license terms.
 # -----------------------------------------------------------------------------------
-FITVER=$(echo "0.3")
+FITVER=$(echo "0.4")
 while :
 do
     clear
     echo "Fedora Install Tool v$FITVER"
     echo ""
-    echo "1. Install Resilio BTsync  |  2. Install Powerline"
+    echo "1. Install Resilio Sync  |  2. Install Powerline"
     echo "3. Install RPM Fusion      |  4. Install Broadcom Wireless"
     echo "5. Install audio codecs    |  6. Instal VLC"
     echo "7. Install MC              |  8. Instal VIM"
@@ -21,7 +21,7 @@ do
     read -p "Enter option: " -s -n1 FITOPT
     case "$FITOPT" in
         1)
-            if [ -e /bin/btsync ]
+            if [ -e /etc/yum.repos.d/resilio-sync.repo ]
             then
                 clear
                 echo "You already have Resilio BTsync installed."
@@ -29,11 +29,11 @@ do
             else
                 clear
                 echo "Starting install..."
-                echo -e "[btsync]\nname=BitTorrent Sync \$basearch\nbaseurl=http://linux-packages.getsync.com/btsync/rpm/\$basearch\nenabled=1\ngpgcheck=1" > btsync.repo
-                sudo mv btsync.repo /etc/yum.repos.d/
-                sudo rpm --import http://linux-packages.getsync.com/btsync/key.asc
-                sudo dnf -y install btsync
-                echo -e "alias startbtsync='systemctl --user start btsync.service'\nalias stopbtsync='systemctl --user stop btsync.service'\nalias statusbtsync='systemctl --user status btsync.service'\nalias enablebtsync='systemctl --user enable btsync.service'\nalias disablebtsync='systemctl --user disable btsync.service'" >> ~/.bashrc
+                echo -e "[rslsync]\nname=Resilio Sync \$basearch\nbaseurl=http://linux-packages.getsync.com/resilio-sync/rpm/\$basearch\nenabled=1\ngpgcheck=1" > resilio-sync.repo
+                sudo mv resilio-sync.repo /etc/yum.repos.d/
+                sudo rpm --import https://linux-packages.getsync.com/resilio-sync/key.asc
+                sudo dnf -y install resilio-sync
+                echo -e "alias startrslsync='systemctl --user start resilio-sync'\nalias stoprslsync='systemctl --user stop resilio-sync'\nalias statusrslsync='systemctl --user status resilio-sync'\nalias enablerslsync='systemctl --user enable resilio-sync'\nalias disablerslsync='systemctl --user disable resilio-sync'" >> ~/.bashrc
                 echo "Install done!"
                 read -p "Press (the infamous) any key to continue... " -n1 -s
             fi
@@ -49,6 +49,7 @@ do
                 echo "Starting install..."
                 sudo dnf -y install powerline
                 echo -e "if [ -f `which powerline-daemon` ]; then\n  powerline-daemon -q\n  POWERLINE_BASH_CONTINUATION=1\n  POWERLINE_BASH_SELECT=1\n  . /usr/share/powerline/bash/powerline.sh\nfi" >> ~/.bashrc
+                su -c 'echo -e "if [ -f `which powerline-daemon` ]; then\n  powerline-daemon -q\n  POWERLINE_BASH_CONTINUATION=1\n  POWERLINE_BASH_SELECT=1\n  . /usr/share/powerline/bash/powerline.sh\nfi" >> /root/.bashrc'
                 echo "Install done!"
                 read -p "Press (the infamous) any key to continue... " -n1 -s
             fi
