@@ -1,20 +1,21 @@
 #!/bin/bash
-# Fedora Install Tool v0.4
+# Fedora Install Tool v0.5
 # Made by Dr. Waldijk
 # A script to install various repos & software
 # Read the README.md for more info
 # By running this script you agree to the license terms.
 # -----------------------------------------------------------------------------------
-FITVER=$(echo "0.4")
+FITVER=$(echo "0.5")
 while :
 do
     clear
     echo "Fedora Install Tool v$FITVER"
     echo ""
     echo "1. Install Resilio Sync  |  2. Install Powerline"
-    echo "3. Install RPM Fusion      |  4. Install Broadcom Wireless"
-    echo "5. Install audio codecs    |  6. Instal VLC"
-    echo "7. Install MC              |  8. Instal VIM"
+    echo "3. Install RPM Fusion    |  4. Install Broadcom Wireless"
+    echo "5. Install audio codecs  |  6. Instal VLC"
+    echo "7. Install MC            |  8. Instal VIM"
+    echo "9. Install nmap"
     echo ""
     echo "Q. Quit"
     echo ""
@@ -134,6 +135,20 @@ do
                 clear
                 echo "Starting install..."
                 sudo dnf -y install vim
+                echo "Install done!"
+                read -p "Press (the infamous) any key to continue... " -n1 -s
+            fi
+        ;;
+        8)
+            if [ -e /bin/nmap ]
+            then
+                clear
+                echo "You already have nmap installed."
+                read -p "Press (the infamous) any key to continue... " -n1 -s
+            else
+                clear
+                echo "Starting install..."
+                sudo dnf -y install nmap
                 echo "Install done!"
                 read -p "Press (the infamous) any key to continue... " -n1 -s
             fi
