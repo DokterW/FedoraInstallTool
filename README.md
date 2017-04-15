@@ -1,6 +1,6 @@
 # Fedora Install Tool
 
-There isn't much to say other than this shell script will install [Resilio BTsync](http://resilio.com), [RPM Fusion](http://rpmfusion.org) repos, (the dreaded) Broadcom Wireless drivers and [Powerline](https://fedoramagazine.org/add-power-terminal-powerline/) on your Fedora install.
+There isn't much to say other than this shell script will install [Resilio Sync](http://resilio.com), [RPM Fusion](http://rpmfusion.org) repos, (the dreaded) Broadcom Wireless drivers and [Powerline](https://fedoramagazine.org/add-power-terminal-powerline/) on your Fedora install.
 
 The shell script will not install repos and drivers by just running the script.
 
@@ -13,6 +13,8 @@ When chosing to install RPM Fusion repo it will install both free and non-free r
 For those of you who love Fedora, but end up with computers with the Broadcom Wireless chipset, you can now easily install the drivers with one click. Keep in mind, you still need to be connected by ethernet and install the RPM Fusion repos first.
 
 ### Roadmap
+
+### Changelog
 
 **2016-08-18**
 * Added0 audio codecs

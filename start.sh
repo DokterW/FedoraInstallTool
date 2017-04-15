@@ -22,8 +22,7 @@ do
     read -p "Enter option: " -s -n1 FITOPT
     case "$FITOPT" in
         1)
-            if [ -e /etc/yum.repos.d/resilio-sync.repo ]
-            then
+            if [ -e /etc/yum.repos.d/resilio-sync.repo ]; then
                 clear
                 echo "You already have Resilio BTsync installed."
                 read -p "Press (the infamous) any key to continue... " -n1 -s
@@ -40,8 +39,7 @@ do
             fi
         ;;
         2)
-            if [ -e /bin/powerline ]
-            then
+            if [ -e /bin/powerline ]; then
                 clear
                 echo "You already have Powerline installed."
                 read -p "Press (the infamous) any key to continue... " -n1 -s
@@ -56,8 +54,7 @@ do
             fi
         ;;
         3)
-            if [ -e /etc/yum.repos.d/rpmfusion-free.repo ]
-            then
+            if [ -e /etc/yum.repos.d/rpmfusion-free.repo ]; then
                 clear
                 echo "You already have RPM Fusion repo installed."
                 read -p "Press (the infamous) any key to continue... " -n1 -s
@@ -70,8 +67,7 @@ do
             fi
         ;;
         4)
-            if [ -e /usr/src/akmods/wl-kmod*.rpm ]
-            then
+            if [ -e /usr/src/akmods/wl-kmod*.rpm ]; then
                 clear
                 echo "You already have Broadcom Wireless drivers installed."
                 read -p "Press (the infamous) any key to continue... " -n1 -s
@@ -98,8 +94,7 @@ do
 #            fi
         ;;
         6)
-            if [ -e /bin/vlc ]
-            then
+            if [ -e /bin/vlc ]; then
                 clear
                 echo "You already have Broadcom Wireless drivers installed."
                 read -p "Press (the infamous) any key to continue... " -n1 -s
@@ -112,8 +107,7 @@ do
             fi
         ;;
         7)
-            if [ -e /bin/mc ]
-            then
+            if [ -e /bin/mc ]; then
                 clear
                 echo "You already have Midnight Commander installed."
                 read -p "Press (the infamous) any key to continue... " -n1 -s
@@ -126,8 +120,7 @@ do
             fi
         ;;
         8)
-            if [ -e /bin/vim ]
-            then
+            if [ -e /bin/vim ]; then
                 clear
                 echo "You already have VIM installed."
                 read -p "Press (the infamous) any key to continue... " -n1 -s
@@ -140,8 +133,7 @@ do
             fi
         ;;
         8)
-            if [ -e /bin/nmap ]
-            then
+            if [ -e /bin/nmap ]; then
                 clear
                 echo "You already have nmap installed."
                 read -p "Press (the infamous) any key to continue... " -n1 -s
